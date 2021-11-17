@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { getColorPalette } from "./utils/index";
 
-function App() {
+const App = () => {
+  const [color, setColor] = useState("");
+  const [palette, setPalette] = useState([]);
+  const handleChangeColor = (event) => setColor(event.target.value);
+
+  const handleBuildPalette = async () => {
+    setPalette(getColorPalette(color));
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div
+        style={{
+          flexDirection: "column",
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <label>Color in HEX : </label>
+        <input type="text" value={color} onChange={handleChangeColor} />
+        <button type="button" onClick={handleBuildPalette}>
+          GO
+        </button>
+      </div>
+      <div
+        style={{
+          float: "left",
+          /* width: 50%; */
+          display: "flex",
+          flex: "50%",
+          flexDirection: "row",
+        }}
+      >
+        Palette :
+        {palette?.map((colorHex, index) => (
+          <div>
+            {console.log(colorHex, index)}
+            <div
+              style={{
+                background: colorHex["accent" + index * 100],
+                width: "100%",
+                paddingTop: "75%",
+                minHeight: 97,
+                minWidth: 127,
+              }}
+            ></div>
+            <label>{colorHex["accent" + index * 100]}</label>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
