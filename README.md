@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce projet a pour but de trouver une palette de couleur par rapport a une couleur de base.
 
 ## Available Scripts
 

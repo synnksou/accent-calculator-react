@@ -41,14 +41,14 @@ const App = () => {
             {console.log(colorHex, index)}
             <div
               style={{
-                background: colorHex["accent" + index * 100],
+                background: colorHex[index * 100],
                 width: "100%",
                 paddingTop: "75%",
                 minHeight: 97,
                 minWidth: 127,
               }}
             ></div>
-            <label>{colorHex["accent" + index * 100]}</label>
+            <label>{colorHex[index * 100]}</label>
           </div>
         ))}
       </div>

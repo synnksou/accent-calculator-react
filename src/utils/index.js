@@ -123,10 +123,10 @@ export const getColorPalette = (color) => {
   const palette = [];
   for (let index = 0; index < 10; index++) {
     if (index * 100 === currentAccent) {
-      const key = `accent${currentAccent}`;
+      const key = `${currentAccent}`;
       palette.push({ [key]: HSLToHex(h, s, l) });
     } else {
-      const key = `accent${index * 100}`;
+      const key = `${index * 100}`;
       palette.push({ [key]: HSLToHex(h, s, lights[index]) });
     }
   }
