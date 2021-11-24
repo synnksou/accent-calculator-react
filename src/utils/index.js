@@ -99,7 +99,11 @@ const buildAccentArray = (l, currentAccent) => {
     if (currentAccent === index * 100) {
       accents.push(l);
     } else {
-      accents.push(coef - index * 10);
+      if (Boolean(index === 0)) {
+        accents.push(coef - 95);
+      } else {
+        accents.push(coef - index * 10);
+      }
     }
   }
   return accents;
@@ -126,9 +130,14 @@ export const getColorPalette = (color) => {
       const key = `${currentAccent}`;
       palette.push({ [key]: HSLToHex(h, s, l) });
     } else {
-      const key = `${index * 100}`;
-      palette.push({ [key]: HSLToHex(h, s, lights[index]) });
+      if (Boolean(index === 0)) {
+        palette.push({ 50: HSLToHex(h, s, lights[index]) });
+      } else {
+        const key = `${index * 100}`;
+        palette.push({ [key]: HSLToHex(h, s, lights[index]) });
+      }
     }
   }
+  console.log({ palette });
   return palette;
 };
